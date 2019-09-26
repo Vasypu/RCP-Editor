@@ -49,7 +49,7 @@
          point="org.eclipse.ui.commands">
       <command
             defaultHandler="org.o7planning.tutorial.rcp.cmd.AboutCommand"
-            id="ButtonOpenFile"
+            id="org.eclipse.ui.edit.text.openLocalFile"
             name="Open">
       </command>
       <command
@@ -67,7 +67,7 @@
                label="File"
                tooltip="File">
             <command
-                  commandId="ButtonOpenFile"
+                  commandId="org.eclipse.ui.edit.text.openLocalFile"
                   id="Editor.OpenFile"
                   style="push">
             </command>
