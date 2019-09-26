@@ -16,8 +16,9 @@
          point="org.eclipse.ui.perspectives">
       <perspective
             class="editor.Perspective"
-            name="RCP Perspective"
-            id="Editor.perspective">
+            icon="icons/eclipse128.png"
+            id="Editor.perspective"
+            name="RCP Perspective">
       </perspective>
    </extension>
    <extension
