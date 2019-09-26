@@ -24,5 +24,20 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
         configurer.setShowCoolBar(false);
         configurer.setShowStatusLine(false);
         configurer.setTitle("Hello RCP"); //$NON-NLS-1$
+        
+//        // Show MenuBar
+//        configurer.setShowMenuBar(true);
+//        // Show CoolBar.
+//        configurer.setShowCoolBar(true);
+//        // Show Status Line.
+//        configurer.setShowStatusLine(true);
+//        // Show PerspectiveBar
+//        configurer.setShowPerspectiveBar(true);
+//        // Show FastViewBars
+//        configurer.setShowFastViewBars(true);
+//        // Show ProgressIndicator
+//        configurer.setShowProgressIndicator(true);
+//         
+//        configurer.setTitle("Hello RCP"); //$NON-NLS-1$
     }
 }

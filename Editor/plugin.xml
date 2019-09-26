@@ -34,14 +34,23 @@
       <perspectiveExtension
             targetID="Editor.perspective">
          <view
-               id="Editor.view2"
+               id="Editor.view1"
                minimized="false"
-               relationship="left">
+               relationship="left"
+               relative="Editor.view1">
          </view>
       </perspectiveExtension>
       <perspectiveExtension
             targetID="*">
       </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.o7planning.tutorial.rcp.cmd.AboutCommand"
+            id="org.o7planning.tutorial.rcp.cmd.about"
+            name="About">
+      </command>
    </extension>
 
 </plugin>
