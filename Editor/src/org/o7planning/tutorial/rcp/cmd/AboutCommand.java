@@ -18,6 +18,7 @@ public class AboutCommand extends AbstractHandler implements IHandler {
 	      AboutDialog dialog = new AboutDialog(shell, SWT.DIALOG_TRIM
 	              | SWT.APPLICATION_MODAL);
 	      dialog.open();*/
+		System.out.print("dsf");
 		return null;
 	}
 
