@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="org.eclipse.ui.perspectiveExtensions" name="org.eclipse.ui.perspectiveExtensions" schema="schema/org.eclipse.ui.perspectiveExtensions.exsd"/>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="editor.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="editor.Perspective"
+            name="RCP Perspective"
+            id="Editor.perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="editor.MainView"
+            id="Editor.view1"
+            name="MainView"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="Editor.perspective">
+         <view
+               id="Editor.view2"
+               minimized="false"
+               relationship="left">
+         </view>
+      </perspectiveExtension>
+      <perspectiveExtension
+            targetID="*">
+      </perspectiveExtension>
+   </extension>
+
+</plugin>
