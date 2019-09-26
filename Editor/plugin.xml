@@ -48,8 +48,13 @@
          point="org.eclipse.ui.commands">
       <command
             defaultHandler="org.o7planning.tutorial.rcp.cmd.AboutCommand"
-            id="org.o7planning.tutorial.rcp.cmd.about"
+            id="ButtonOpenFile"
             name="Open">
+      </command>
+      <command
+            defaultHandler="editor.SaveButton"
+            id="ButtonSaveFile"
+            name="Save">
       </command>
    </extension>
    <extension
@@ -61,8 +66,13 @@
                label="File"
                tooltip="File">
             <command
-                  commandId="org.o7planning.tutorial.rcp.cmd.about"
-                  id="Editor.AboutDialog"
+                  commandId="ButtonOpenFile"
+                  id="Editor.OpenFile"
+                  style="push">
+            </command>
+            <command
+                  commandId="ButtonSaveFile"
+                  id="Editor.SaveFile"
                   style="push">
             </command>
          </menu>
