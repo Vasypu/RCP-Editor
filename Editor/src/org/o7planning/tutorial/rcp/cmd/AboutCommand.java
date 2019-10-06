@@ -19,8 +19,9 @@ public class AboutCommand extends AbstractHandler implements IHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		// TODO Auto-generated method stub
 		
-		Display display = new Display ();
-	    Shell shell = new Shell (display);		    
+		//Display display = new Display ();
+		
+	    Shell shell = new Shell (Display.getDefault());		    
 		
 		FileDialog dlg = new FileDialog(shell, SWT.OPEN);
 	    String fname = dlg.open();
@@ -32,11 +33,11 @@ public class AboutCommand extends AbstractHandler implements IHandler {
 		shell.pack ();
 	    shell.open ();
 
-	    while (!shell.isDisposed ()) {
+	    /*while (!shell.isDisposed ()) {
 	        if (!display.readAndDispatch ()) 
 	            display.sleep ();
 	    }
-	    display.dispose ();
+	    display.dispose ();*/
 		System.out.print("Кнопка Open работает");
 	    
 		return null;
