@@ -1,5 +1,6 @@
 package editor;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -25,13 +26,12 @@ public class OpenFile extends AbstractHandler implements IHandler {
 	    String fname = dlg.open();	    
 	    
 	    if(fname != null) {
-	    	try (FileInputStream file = new FileInputStream(fname);) {
+	    	try (BufferedReader br = new BufferedReader(new FileReader(fname));) {
 	    		
-				byte [] buffer = new byte[55];				
-				int readed;
-				while((readed = file.read(buffer))!=-1){
+				String readed;
+				while((readed = br.readLine())!=null){
 		              
-		                System.out.print(buffer.toString());		                
+		                System.out.print(readed+ "\n");                
 		            }		            
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
