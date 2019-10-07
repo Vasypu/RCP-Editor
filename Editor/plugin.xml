@@ -48,13 +48,13 @@
    <extension
          point="org.eclipse.ui.commands">
       <command
-            defaultHandler="org.o7planning.tutorial.rcp.cmd.AboutCommand"
+            defaultHandler="editor.OpenFile"
             id="org.eclipse.ui.edit.text.openLocalFile"
             name="Open">
       </command>
       <command
             defaultHandler="editor.SaveButton"
-            id="ButtonSaveFile"
+            id="org.eclipse.ui.file.save"
             name="Save">
       </command>
    </extension>
@@ -72,7 +72,7 @@
                   style="push">
             </command>
             <command
-                  commandId="ButtonSaveFile"
+                  commandId="org.eclipse.ui.file.save"
                   id="Editor.SaveFile"
                   style="push">
             </command>

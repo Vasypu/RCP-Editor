@@ -5,19 +5,7 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandler;
 import org.eclipse.core.commands.IHandlerListener;
 
-public class SaveButton implements IHandler {
-
-	@Override
-	public void addHandlerListener(IHandlerListener handlerListener) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void dispose() {
-		// TODO Auto-generated method stub
-
-	}
+public class SaveButton implements IHandler {	
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
@@ -25,6 +13,18 @@ public class SaveButton implements IHandler {
 		
 		System.out.print("asd");
 		return null;
+	}
+
+	@Override
+	public void addHandlerListener(IHandlerListener handlerListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void dispose() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
@@ -42,7 +42,6 @@ public class SaveButton implements IHandler {
 	@Override
 	public void removeHandlerListener(IHandlerListener handlerListener) {
 		// TODO Auto-generated method stub
-
+		
 	}
-
 }
