@@ -27,11 +27,12 @@ public class OpenFile extends AbstractHandler implements IHandler {
 	    
 	    if(fname != null) {
 	    	try (BufferedReader br = new BufferedReader(new FileReader(fname));) {
-	    		
+	    		MainView view = new MainView();
 				String readed;
 				while((readed = br.readLine())!=null){
 		              
-		                System.out.print(readed+ "\n");                
+		                System.out.print(readed + "\n");		                
+		                view.getText(readed);
 		            }		            
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
