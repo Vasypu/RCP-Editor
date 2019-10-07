@@ -8,6 +8,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.internal.dialogs.AboutDialog;
 
@@ -21,24 +22,31 @@ public class AboutCommand extends AbstractHandler implements IHandler {
 		
 		//Display display = new Display ();
 		
-	    Shell shell = new Shell (Display.getDefault());		    
 		
-		FileDialog dlg = new FileDialog(shell, SWT.OPEN);
+	    //Shell shell = new Shell (Display.getDefault());		    
+		
+		long handle = 0;
+		FileDialog dlg = new FileDialog(Shell.gtk_new(Display.getDefault(), handle), SWT.OPEN);
 	    String fname = dlg.open();
+	    System.out.println(HandlerUtil.getActiveShell(event));
+	    
+	    Text text = new Text(dlg.getParent(), SWT.NONE);
+	    text.setText(dlg.getParent().getText().toString());
+	    System.out.print(dlg.getText());
 	     
 	    if(fname != null) {
-	 	   //textfile.setText(fname);		    		
-	 	}	
+	 	   System.out.println();		    		
+	 	}
 		
-		shell.pack ();
-	    shell.open ();
+		/*shell.pack ();
+	    shell.open ();*/
 
 	    /*while (!shell.isDisposed ()) {
 	        if (!display.readAndDispatch ()) 
 	            display.sleep ();
 	    }
 	    display.dispose ();*/
-		System.out.print("Кнопка Open работает");
+		System.out.println("Кнопка Open работает");
 	    
 		return null;
 	}

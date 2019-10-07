@@ -7,8 +7,8 @@ import org.eclipse.swt.widgets.Shell;
 
 public class AboutDialog {
 	
-	Display display = new Display ();
-    Shell shell = new Shell (display);
+	/*Display display = new Display ();
+    Shell shell = new Shell (display);*/
 
 	/*private Shell shell;
 	FileDialog dlg = new FileDialog(shell, SWT.OPEN);
@@ -18,7 +18,7 @@ public class AboutDialog {
  	   //textfile.setText(fname);		    		
  	}	*/
 	public static void main(String[] args) {
-		System.out.println("asd");
+		//System.out.println("asd");
 	}
 	/*shell.pack ();
     shell.open ();
