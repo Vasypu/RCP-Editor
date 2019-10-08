@@ -24,7 +24,7 @@
    <extension
          point="org.eclipse.ui.views">
       <view
-            class="editor.MainView"
+            class="editor.TextView"
             id="Editor.view1"
             name="MainView"
             restorable="true">
@@ -48,12 +48,12 @@
    <extension
          point="org.eclipse.ui.commands">
       <command
-            defaultHandler="editor.OpenFile"
+            defaultHandler="editor.OpenFileCmdHandler"
             id="org.eclipse.ui.edit.text.openLocalFile"
             name="Open">
       </command>
       <command
-            defaultHandler="editor.SaveButton"
+            defaultHandler="editor.SaveFileCmdHandler"
             id="org.eclipse.ui.file.save"
             name="Save">
       </command>

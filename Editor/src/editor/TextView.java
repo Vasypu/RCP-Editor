@@ -12,13 +12,13 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.part.ViewPart;
 
 
-public class MainView extends ViewPart {
+public class TextView extends ViewPart {
 	
-	public static final String ID = MainView.class.getCanonicalName();
+	public static final String ID = TextView.class.getCanonicalName();
 	
 	String readed;
 
-	public MainView(/*String readed*/) {
+	public TextView(/*String readed*/) {
 		//this.readed = readed;
 	}
 

@@ -17,7 +17,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-public class OpenFile extends AbstractHandler implements IHandler {		
+public class OpenFileCmdHandler extends AbstractHandler implements IHandler {		
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
@@ -27,7 +27,7 @@ public class OpenFile extends AbstractHandler implements IHandler {
 	    
 	    if(fname != null) {
 	    	try (BufferedReader br = new BufferedReader(new FileReader(fname));) {
-	    		MainView view = new MainView();
+	    		TextView view = new TextView();
 				String readed;
 				while((readed = br.readLine())!=null){
 		              
