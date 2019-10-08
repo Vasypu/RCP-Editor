@@ -32,7 +32,7 @@ public class OpenFileCmdHandler extends AbstractHandler implements IHandler {
 				while((readed = br.readLine())!=null){
 		              
 		                System.out.print(readed + "\n");		                
-		                view.getText(readed);
+		                view.getText(readed ,event);
 		            }		            
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
