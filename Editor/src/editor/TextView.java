@@ -6,37 +6,32 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import javax.swing.text.View;
+
 import org.eclipse.core.commands.ExecutionEvent;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.part.ViewPart;
 
 
 public class TextView extends ViewPart {
 	
-	public static final String ID = TextView.class.getCanonicalName();
-	
-	
-
-	public TextView(/*String readed*/) {
-		//this.readed = readed;
-	}
+	public static final String ID = TextView.class.getCanonicalName();	
 
 	@Override
 	public void createPartControl(Composite parent) {
-		/*try {
-			HandlerUtil.getActiveWorkbenchWindow(event).getActivePage().showView(ID);
-		} catch (PartInitException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-		Text text = new Text(parent, 0);
-        text.setText("Imagine a fantastic user interface here");
+		
+		/*Text text = new Text(parent, 0);
+        text.setText("Imagine a fantastic user interface here");*/
+		//Text text = new Text(parent,0);
 		
                        
 	}
@@ -47,20 +42,10 @@ public class TextView extends ViewPart {
 
 	}
 	
-	public void getText(String readed, ExecutionEvent event) {		
+	public void getText(String readed, ExecutionEvent event) {			
 		
-		try {
-			HandlerUtil.getActiveWorkbenchWindow(event).getActivePage().showView(ID);
-		} catch (PartInitException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Text text = new Text((Composite) HandlerUtil.getActiveWorkbenchWindow(event).getActivePage(), SWT.NONE);
-		text.setText(readed);
-			
-		
+		Text text = new Text(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), SWT.NONE);
+		text.setText(readed);		
 		
 	}
-
-
 }

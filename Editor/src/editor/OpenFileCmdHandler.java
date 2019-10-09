@@ -30,7 +30,7 @@ public class OpenFileCmdHandler extends AbstractHandler implements IHandler {
 	    	try (BufferedReader br = new BufferedReader(new FileReader(fname));) {
 	    		TextView view = new TextView();
 				String readed;
-				while((readed = br.readLine())!=null){
+				while((readed = br.readLine()) != null) {
 		              
 		                System.out.print(readed + "\n");		                
 		                view.getText(readed, event);
