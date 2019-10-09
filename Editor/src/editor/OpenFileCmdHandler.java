@@ -15,6 +15,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 public class OpenFileCmdHandler extends AbstractHandler implements IHandler {		
@@ -32,7 +33,7 @@ public class OpenFileCmdHandler extends AbstractHandler implements IHandler {
 				while((readed = br.readLine())!=null){
 		              
 		                System.out.print(readed + "\n");		                
-		                view.getText(readed ,event);
+		                view.getText(readed, event);
 		            }		            
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block

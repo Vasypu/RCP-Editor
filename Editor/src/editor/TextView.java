@@ -10,6 +10,7 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.handlers.HandlerUtil;
@@ -20,8 +21,7 @@ public class TextView extends ViewPart {
 	
 	public static final String ID = TextView.class.getCanonicalName();
 	
-	String readed;
-	ExecutionEvent event;
+	
 
 	public TextView(/*String readed*/) {
 		//this.readed = readed;
@@ -35,15 +35,8 @@ public class TextView extends ViewPart {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
-		Text text;
-		try {
-			text = new Text((Composite) HandlerUtil.getActiveWorkbenchWindow(event).getActivePage().showView(ID), SWT.BORDER);
-			text.setText(readed + "\n"); 
-		} catch (PartInitException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        //text.setText("Imagine a fantastic user interface here");
+		Text text = new Text(parent, 0);
+        text.setText("Imagine a fantastic user interface here");
 		
                        
 	}
@@ -54,9 +47,19 @@ public class TextView extends ViewPart {
 
 	}
 	
-	public void getText(String readed, ExecutionEvent event) {
-		this.event = event;
-		this.readed = readed;
+	public void getText(String readed, ExecutionEvent event) {		
+		
+		try {
+			HandlerUtil.getActiveWorkbenchWindow(event).getActivePage().showView(ID);
+		} catch (PartInitException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Text text = new Text((Composite) HandlerUtil.getActiveWorkbenchWindow(event).getActivePage(), SWT.NONE);
+		text.setText(readed);
+			
+		
+		
 	}
 
 
