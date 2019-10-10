@@ -43,8 +43,8 @@ public class TextView extends ViewPart {
 		//Text text = new Text(parent,0);
 		GridLayout gridLayout = new GridLayout();
 		parent.setLayout(gridLayout);
-		Text textfile= new Text(parent, SWT.MULTI |SWT.BORDER);    
-		textfile.setLayoutData(new GridData(SWT.FILL,SWT.CENTER, true, false));		
+		Text textfile= new Text(parent, SWT.MULTI |SWT.BORDER);   
+		textfile.setLayoutData(new GridData(SWT.FILL,SWT.FILL, true, true));
 		
 		Button review= new Button(parent, SWT.PUSH);
 		review.setText("Обзор");        
@@ -52,35 +52,10 @@ public class TextView extends ViewPart {
 		review.addSelectionListener(new SelectionAdapter() {
 
 		    public void widgetSelected (SelectionEvent e) {
-		    	FileDialog dlg = new FileDialog(parent.getShell(), SWT.OPEN);
-			       String fname = dlg.open();
-			       if(fname != null) {
-			       try (BufferedReader br = new BufferedReader(new FileReader(fname));) {
-			    		TextView view = new TextView();
-						String readed;
-						while((readed = br.readLine()) != null) {				              
-							
-						    	   textfile.setText(readed + "\n");		    		
-						    	}				               
-				            } catch (FileNotFoundException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							} catch (IOException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}		      
-			        
-			       		    			       
-		    }
-		    }});
-		//MessageDialog.openInformation(parent.getShell(), "Info", readed + "\n");
-		
+		    	
+		    	readFile(parent, textfile);		
+		    }});		
                        
-	}
-
-	protected void showView() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -93,7 +68,26 @@ public class TextView extends ViewPart {
 		this.readed = readed;
 		//MessageDialog.openInformation(HandlerUtil.getActiveWorkbenchWindow(event).getShell(), "Info", readed + "\n");
 		/*Text text = new Text(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), SWT.NONE);
-		text.setText(readed);*/		
-		
+		text.setText(readed);*/			
 	}
+	
+	void readFile(Composite parent, Text textfile) {
+		
+	FileDialog dlg = new FileDialog(parent.getShell(), SWT.OPEN);
+    String fname = dlg.open();
+    if(fname != null) {
+    try (BufferedReader br = new BufferedReader(new FileReader(fname));) {			    		
+			String readed;
+			while((readed = br.readLine()) != null) {				              
+				
+			    	   textfile.setText(readed + "\n");		    		
+			    	}				               
+	            } catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}		          		    			       
+    };}
 }
