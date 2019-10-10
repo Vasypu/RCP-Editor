@@ -2,6 +2,7 @@ package editor;
 
 import org.eclipse.swt.widgets.Button;
 import java.awt.Event;
+import java.awt.Window;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -32,7 +33,7 @@ import org.eclipse.swt.widgets.FileDialog;
 public class TextView extends ViewPart {
 	
 	public static final String ID = TextView.class.getCanonicalName();	
-	String readed;
+	private String readed;
 
 	@Override
 	public void createPartControl(Composite parent) {
@@ -42,24 +43,37 @@ public class TextView extends ViewPart {
 		//Text text = new Text(parent,0);
 		GridLayout gridLayout = new GridLayout();
 		parent.setLayout(gridLayout);
-		Text textfile= new Text(parent, SWT.BORDER);    
-		textfile.setLayoutData(new GridData(SWT.FILL,SWT.CENTER, true, false));
+		Text textfile= new Text(parent, SWT.MULTI |SWT.BORDER);    
+		textfile.setLayoutData(new GridData(SWT.FILL,SWT.CENTER, true, false));		
 		
 		Button review= new Button(parent, SWT.PUSH);
 		review.setText("Обзор");        
 		review.setLayoutData(new GridData(SWT.NONE, SWT.CENTER, false, false));
 		review.addSelectionListener(new SelectionAdapter() {
 
-		    public void widgetSelected (SelectionEvent e){
-		    	FileDialog dlg = new FileDialog((Shell) parent, SWT.OPEN);
+		    public void widgetSelected (SelectionEvent e) {
+		    	FileDialog dlg = new FileDialog(parent.getShell(), SWT.OPEN);
 			       String fname = dlg.open();
-			        
 			       if(fname != null) {
-			    	   textfile.setText(readed);		    		
-			    	}		    			       
+			       try (BufferedReader br = new BufferedReader(new FileReader(fname));) {
+			    		TextView view = new TextView();
+						String readed;
+						while((readed = br.readLine()) != null) {				              
+							
+						    	   textfile.setText(readed + "\n");		    		
+						    	}				               
+				            } catch (FileNotFoundException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							} catch (IOException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}		      
+			        
+			       		    			       
 		    }
-	});
-		
+		    }});
+		//MessageDialog.openInformation(parent.getShell(), "Info", readed + "\n");
 		
                        
 	}
