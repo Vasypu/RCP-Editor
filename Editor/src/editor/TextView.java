@@ -1,5 +1,6 @@
 package editor;
 
+import org.eclipse.swt.widgets.Button;
 import java.awt.Event;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -11,8 +12,13 @@ import javax.swing.text.View;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbenchPage;
@@ -20,6 +26,7 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.part.ViewPart;
+import org.eclipse.swt.widgets.FileDialog;
 
 
 public class TextView extends ViewPart {
@@ -33,24 +40,33 @@ public class TextView extends ViewPart {
 		/*Text text = new Text(parent, 0);
         text.setText("Imagine a fantastic user interface here");*/
 		//Text text = new Text(parent,0);
-		ViewPart part = new ViewPart() {
-			
-			@Override
-			public void setFocus() {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void createPartControl(Composite parent) {
-				// TODO Auto-generated method stub
-				Text text = new Text(parent, SWT.None);
-				text.setText(readed);
-				
-			}
-		};
+		GridLayout gridLayout = new GridLayout();
+		parent.setLayout(gridLayout);
+		Text textfile= new Text(parent, SWT.BORDER);    
+		textfile.setLayoutData(new GridData(SWT.FILL,SWT.CENTER, true, false));
+		
+		Button review= new Button(parent, SWT.PUSH);
+		review.setText("Обзор");        
+		review.setLayoutData(new GridData(SWT.NONE, SWT.CENTER, false, false));
+		review.addSelectionListener(new SelectionAdapter() {
+
+		    public void widgetSelected (SelectionEvent e){
+		    	FileDialog dlg = new FileDialog((Shell) parent, SWT.OPEN);
+			       String fname = dlg.open();
+			        
+			       if(fname != null) {
+			    	   textfile.setText(readed);		    		
+			    	}		    			       
+		    }
+	});
+		
 		
                        
+	}
+
+	protected void showView() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
@@ -61,7 +77,7 @@ public class TextView extends ViewPart {
 	
 	public void getText(String readed, ExecutionEvent event) {	
 		this.readed = readed;
-		
+		//MessageDialog.openInformation(HandlerUtil.getActiveWorkbenchWindow(event).getShell(), "Info", readed + "\n");
 		/*Text text = new Text(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), SWT.NONE);
 		text.setText(readed);*/		
 		
