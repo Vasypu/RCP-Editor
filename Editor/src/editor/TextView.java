@@ -45,6 +45,7 @@ public class TextView extends ViewPart {
 		parent.setLayout(gridLayout);
 		Text textfile= new Text(parent, SWT.MULTI |SWT.BORDER);   
 		textfile.setLayoutData(new GridData(SWT.FILL,SWT.FILL, true, true));
+		textfile.setText(readed + "\n");
 		
 		Button review= new Button(parent, SWT.PUSH);
 		review.setText("Обзор");        
@@ -53,9 +54,8 @@ public class TextView extends ViewPart {
 
 		    public void widgetSelected (SelectionEvent e) {
 		    	
-		    	readFile(parent, textfile);		
-		    }});		
-                       
+		    	//readFile(parent, textfile);		
+		    }});                       
 	}
 
 	@Override
