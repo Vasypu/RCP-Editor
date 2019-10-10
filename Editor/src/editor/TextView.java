@@ -25,6 +25,7 @@ import org.eclipse.ui.part.ViewPart;
 public class TextView extends ViewPart {
 	
 	public static final String ID = TextView.class.getCanonicalName();	
+	String readed;
 
 	@Override
 	public void createPartControl(Composite parent) {
@@ -32,6 +33,22 @@ public class TextView extends ViewPart {
 		/*Text text = new Text(parent, 0);
         text.setText("Imagine a fantastic user interface here");*/
 		//Text text = new Text(parent,0);
+		ViewPart part = new ViewPart() {
+			
+			@Override
+			public void setFocus() {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void createPartControl(Composite parent) {
+				// TODO Auto-generated method stub
+				Text text = new Text(parent, SWT.None);
+				text.setText(readed);
+				
+			}
+		};
 		
                        
 	}
@@ -42,10 +59,11 @@ public class TextView extends ViewPart {
 
 	}
 	
-	public void getText(String readed, ExecutionEvent event) {			
+	public void getText(String readed, ExecutionEvent event) {	
+		this.readed = readed;
 		
-		Text text = new Text(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), SWT.NONE);
-		text.setText(readed);		
+		/*Text text = new Text(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), SWT.NONE);
+		text.setText(readed);*/		
 		
 	}
 }
