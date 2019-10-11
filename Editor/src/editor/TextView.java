@@ -45,7 +45,7 @@ public class TextView extends ViewPart {
 		//Text text = new Text(parent,0);
 		GridLayout gridLayout = new GridLayout();
 		parent.setLayout(gridLayout);
-		Text textfile= new Text(parent, SWT.MULTI |SWT.BORDER);   
+		Text textfile= new Text(parent, SWT.MULTI |SWT.BORDER |SWT.WRAP);   
 		textfile.setLayoutData(new GridData(SWT.FILL,SWT.FILL, true, true));
 		
 		
@@ -91,7 +91,7 @@ public class TextView extends ViewPart {
 			while((readed = br.readLine()) != null) {	
 				
 						read.add(readed + "\n");
-			    	   textfile.setText(read.toString().replaceAll("^\\[|\\]$", ""));				    	   
+			    	   textfile.setText(read.toString().replaceAll("^\\[|\\]$", ""));		    	   
 			    	}				               
 	            } catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
