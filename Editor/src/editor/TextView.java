@@ -82,7 +82,7 @@ public class TextView extends ViewPart {
 	
 	void readFile(Composite parent, Text textfile) {
 		
-	FileDialog dlg = new FileDialog(parent.getShell(), SWT.OPEN);
+	FileDialog dlg = new FileDialog(parent.getShell(), SWT.OPEN);	
     String fname = dlg.open();
     if(fname != null) {
     try (BufferedReader br = new BufferedReader(new FileReader(fname));) {			    		
@@ -91,7 +91,7 @@ public class TextView extends ViewPart {
 			while((readed = br.readLine()) != null) {	
 				
 						read.add(readed + "\n");
-			    	   textfile.setText(read.toString().replaceAll("^\\[|\\]$", ""));		    	   
+			    	   textfile.setText(read.toString().replaceAll("^\\[|\\]$", "").replace(",", ""));		    	   
 			    	}				               
 	            } catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block

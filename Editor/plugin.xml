@@ -26,7 +26,7 @@
       <view
             class="editor.TextView"
             id="Editor.view1"
-            name="MainView"
+            name="11"
             restorable="true">
       </view>
    </extension>
