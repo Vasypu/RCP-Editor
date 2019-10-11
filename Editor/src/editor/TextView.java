@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.text.View;
 
@@ -20,6 +21,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbenchPage;
@@ -45,8 +47,15 @@ public class TextView extends ViewPart {
 		parent.setLayout(gridLayout);
 		Text textfile= new Text(parent, SWT.MULTI |SWT.BORDER);   
 		textfile.setLayoutData(new GridData(SWT.FILL,SWT.FILL, true, true));
-		textfile.setText(readed + "\n");
 		
+		
+		/*class Inner {
+			private String readed;
+			public Inner (String readed) {}
+			void getText(String readed) { this.readed = readed; }
+		}*/
+		
+		//textfile.setText(readed + "\n");
 		Button review= new Button(parent, SWT.PUSH);
 		review.setText("Обзор");        
 		review.setLayoutData(new GridData(SWT.NONE, SWT.CENTER, false, false));
@@ -54,7 +63,7 @@ public class TextView extends ViewPart {
 
 		    public void widgetSelected (SelectionEvent e) {
 		    	
-		    	//readFile(parent, textfile);		
+		    	readFile(parent, textfile);		
 		    }});                       
 	}
 
@@ -78,9 +87,11 @@ public class TextView extends ViewPart {
     if(fname != null) {
     try (BufferedReader br = new BufferedReader(new FileReader(fname));) {			    		
 			String readed;
-			while((readed = br.readLine()) != null) {				              
+			ArrayList<String> read = new ArrayList<String>();
+			while((readed = br.readLine()) != null) {	
 				
-			    	   textfile.setText(readed + "\n");		    		
+						read.add(readed + "\n");
+			    	   textfile.setText(read.toString().replaceAll("^\\[|\\]$", ""));				    	   
 			    	}				               
 	            } catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
