@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -21,28 +22,20 @@ import org.eclipse.ui.handlers.HandlerUtil;
 public class OpenFileCmdHandler extends AbstractHandler implements IHandler {		
 
 	@Override
-	public Object execute(ExecutionEvent event) throws ExecutionException {
+	public Object execute(ExecutionEvent event) throws ExecutionException {	
+		HandlerUtil.getActiveShell(event);
 		
-		FileDialog dlg = new FileDialog(HandlerUtil.getActiveShell(event), SWT.OPEN);
-	    String fname = dlg.open();	    
+		TextView v;
+		try {
+			v = (TextView) HandlerUtil.getActiveWorkbenchWindow(event).
+					getActivePage().showView(TextView.ID);
+			v.readFile();
+		} catch (PartInitException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    		
 	    
-	    if(fname != null) {
-	    	try (BufferedReader br = new BufferedReader(new FileReader(fname));) {
-	    		TextView view = new TextView();
-				String readed;
-				while((readed = br.readLine()) != null) {
-		              
-		                //System.out.print(readed + "\n");		                
-		                view.getText(readed + "\n", event);
-		            }		            
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	 	}			    
 		return null;
 	}
 }
