@@ -2,8 +2,10 @@ package editor;
 
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import org.eclipse.swt.SWT;
@@ -73,5 +75,18 @@ public class TextView extends ViewPart {
 		String fname = dlg.open();
 		if (fname != null)
 		    System.out.println ("" + fname);
+		
+		String write = text.getText();
+		
+		try(BufferedWriter bw = new BufferedWriter(new FileWriter(fname)))
+        {
+            bw.write(write);
+        }
+        catch(IOException ex){
+              
+            System.out.println(ex.getMessage());
+        } 
+		
+		
 	}
 }
