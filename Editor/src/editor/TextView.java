@@ -73,20 +73,17 @@ public class TextView extends ViewPart {
 		
 		FileDialog dlg = new FileDialog(parent, SWT.SAVE);		
 		String fname = dlg.open();
-		if (fname != null)
-		    System.out.println ("" + fname);
-		
-		String write = text.getText();
-		
-		try(BufferedWriter bw = new BufferedWriter(new FileWriter(fname)))
-        {
-            bw.write(write);
-        }
-        catch(IOException ex){
-              
-            System.out.println(ex.getMessage());
-        } 
-		
-		
+		if (fname != null) {
+			
+			String write = text.getText();
+			try(BufferedWriter bw = new BufferedWriter(new FileWriter(fname)))
+			{
+				bw.write(write);
+			}
+			catch(IOException ex){
+            
+				System.out.println(ex.getMessage());
+			}
+		}
 	}
 }
