@@ -14,14 +14,9 @@ public class SaveFileCmdHandler extends AbstractHandler implements IHandler {
 		// TODO Auto-generated method stub
 		
 		TextView v;
-		try {
-			v = (TextView) HandlerUtil.getActiveWorkbenchWindow(event).
-					getActivePage().showView(TextView.ID);
-			v.saveFile();
-		} catch (PartInitException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
+		v = (TextView) HandlerUtil.getActiveWorkbenchWindow(event).
+				getActivePage().getActivePart();
+		v.saveFile();		
 		
 		return null;
 	}
