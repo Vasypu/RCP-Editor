@@ -51,13 +51,13 @@ public class TextView extends ViewPart {
 		FileDialog dlg = new FileDialog(parent, SWT.OPEN);	
 	    String fname = dlg.open();
 	    if(fname != null) {
-	    try (BufferedReader br = new BufferedReader(new FileReader(fname));) {			    		
-				String readed;
-				ArrayList<String> read = new ArrayList<String>();
-				while((readed = br.readLine()) != null) {	
-					
-							read.add(readed + "\n");
-				    	   text.setText(read.toString().replaceAll("^\\[|\\]$", "").replace(",", ""));		    	   
+	    try (BufferedReader br = new BufferedReader(new FileReader(fname));) {		
+	    		StringBuffer stringBuffer = new StringBuffer();	 	    		
+				String readed;				
+				while((readed = br.readLine()) != null) {						
+							
+							stringBuffer.append(readed + "\n");
+							text.setText(stringBuffer + "\n");
 				    	}				               
 		            } catch (FileNotFoundException e1) {
 						// TODO Auto-generated catch block
