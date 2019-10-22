@@ -9,23 +9,22 @@ import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-public class OpenFileCmdHandler extends AbstractHandler implements IHandler {		
+public class OpenFileCmdHandler extends AbstractHandler implements IHandler {
 
 	@Override
-	public Object execute(ExecutionEvent event) throws ExecutionException {	
-		HandlerUtil.getActiveShell(event);		
+	public Object execute(ExecutionEvent event) throws ExecutionException {
+		HandlerUtil.getActiveShell(event);
 		TextView v;
-		try {			
-			v = (TextView) HandlerUtil.getActiveWorkbenchWindow(event).
-					getActivePage().showView(TextView.ID);
+		try {
+			v = (TextView) HandlerUtil.getActiveWorkbenchWindow(event).getActivePage().showView(TextView.ID);
 			v.readFile();
 		} catch (PartInitException e) {
-			//Shell shell = new Shell();
+			// Shell shell = new Shell();
 			int style = SWT.ERROR | SWT.OK | SWT.CANCEL;
-			MessageBox messageBox = new MessageBox (HandlerUtil.getActiveShell(event), style);
-			messageBox.setText ("Ошибка");
-			messageBox.setMessage (e.getMessage());				
-		}	    
+			MessageBox messageBox = new MessageBox(HandlerUtil.getActiveShell(event), style);
+			messageBox.setText("Ошибка");
+			messageBox.setMessage(e.getMessage());
+		}
 		return null;
 	}
 }
