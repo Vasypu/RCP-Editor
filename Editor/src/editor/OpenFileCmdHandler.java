@@ -6,7 +6,6 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandler;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.MessageBox;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.handlers.HandlerUtil;
 
@@ -21,9 +20,9 @@ public class OpenFileCmdHandler extends AbstractHandler implements IHandler {
 					getActivePage().showView(TextView.ID);
 			v.readFile();
 		} catch (PartInitException e) {
-			Shell shell = new Shell();
+			//Shell shell = new Shell();
 			int style = SWT.ERROR | SWT.OK | SWT.CANCEL;
-			MessageBox messageBox = new MessageBox (shell, style);
+			MessageBox messageBox = new MessageBox (HandlerUtil.getActiveShell(event), style);
 			messageBox.setText ("Ошибка");
 			messageBox.setMessage (e.getMessage());				
 		}	    

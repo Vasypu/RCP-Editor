@@ -7,7 +7,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -30,8 +29,8 @@ public class TextView extends ViewPart {
 		
 		this.parent = parent.getShell();			
 		GridLayout gridLayout = new GridLayout();
-		parent.setLayout(gridLayout);
-		text = new Text(parent, SWT.MULTI |SWT.BORDER |SWT.WRAP);   
+		parent.setLayout(gridLayout);		
+		text = new Text(parent, SWT.MULTI |SWT.BORDER |SWT.WRAP |SWT.V_SCROLL);   
 		text.setLayoutData(new GridData(SWT.FILL,SWT.FILL, true, true));					
 	}
 
@@ -56,15 +55,15 @@ public class TextView extends ViewPart {
 							text.setText(stringBuffer + "\n");
 				    	}				               
 		            } catch (FileNotFoundException e1) {
-		            	Shell shell = new Shell();
+		            	//Shell shell = new Shell();
 		    			int style = SWT.ERROR | SWT.OK | SWT.CANCEL;
-		    			MessageBox messageBox = new MessageBox (shell, style);
+		    			MessageBox messageBox = new MessageBox (parent, style);
 		    			messageBox.setText ("Ошибка");
 		    			messageBox.setMessage (e1.getMessage());
 					} catch (IOException e1) {
-						Shell shell = new Shell();
+						//Shell shell = new Shell();
 						int style = SWT.ERROR | SWT.OK | SWT.CANCEL;
-						MessageBox messageBox = new MessageBox (shell, style);
+						MessageBox messageBox = new MessageBox (parent, style);
 						messageBox.setText ("Ошибка");
 						messageBox.setMessage (e1.getMessage());
 					}		          		    			       
