@@ -54,7 +54,7 @@
       </command>
       <command
             defaultHandler="editor.SaveFileCmdHandler"
-            id="org.eclipse.ui.file.save"
+            id="org.eclipse.ui.edit.text.save"
             name="Save">
       </command>
    </extension>
@@ -72,7 +72,7 @@
                   style="push">
             </command>
             <command
-                  commandId="org.eclipse.ui.file.save"
+                  commandId="org.eclipse.ui.edit.text.save"
                   id="Editor.SaveFile"
                   style="push">
             </command>
