@@ -59,12 +59,14 @@ public class TextView extends ViewPart {
 				MessageBox messageBox = new MessageBox(parent, style);
 				messageBox.setText("Ошибка");
 				messageBox.setMessage(e1.getMessage());
+				messageBox.open();
 			} catch (IOException e1) {
 				// Shell shell = new Shell();
 				int style = SWT.ERROR | SWT.OK | SWT.CANCEL;
 				MessageBox messageBox = new MessageBox(parent, style);
 				messageBox.setText("Ошибка");
 				messageBox.setMessage(e1.getMessage());
+				messageBox.open();
 			}
 		}
 	}

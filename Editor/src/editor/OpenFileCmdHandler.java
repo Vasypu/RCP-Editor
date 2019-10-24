@@ -24,6 +24,7 @@ public class OpenFileCmdHandler extends AbstractHandler implements IHandler {
 			MessageBox messageBox = new MessageBox(HandlerUtil.getActiveShell(event), style);
 			messageBox.setText("Ошибка");
 			messageBox.setMessage(e.getMessage());
+			messageBox.open();
 		}
 		return null;
 	}
