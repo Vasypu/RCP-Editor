@@ -50,9 +50,9 @@ public class TextView extends ViewPart {
 				String readed;
 				while ((readed = br.readLine()) != null) {
 
-					stringBuffer.append(readed + "\n");
-					text.setText(stringBuffer + "\n");
+					stringBuffer.append(readed + "\n");					
 				}
+				text.setText(stringBuffer.toString() + "\n");
 			} catch (FileNotFoundException e1) {
 				// Shell shell = new Shell();
 				int style = SWT.ERROR | SWT.OK | SWT.CANCEL;
