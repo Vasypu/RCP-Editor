@@ -16,7 +16,7 @@ public class OpenFileCmdHandler extends AbstractHandler implements IHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		HandlerUtil.getActiveShell(event);		
+		HandlerUtil.getActiveShell(event);		 
 		TextView v;
 		try {			
 			v = (TextView) HandlerUtil.getActiveWorkbenchWindow(event).getActivePage().showView(TextView.ID, Integer.toString(instanceNum++), IWorkbenchPage.VIEW_ACTIVATE);
